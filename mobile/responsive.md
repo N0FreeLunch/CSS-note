@@ -6,3 +6,37 @@
 - background-image 등으로 이미지를 불러오는 경우 내부의 태그가 꽉차지 못한 경우 상위 태그의 세로 사이즈가 충분하지 못해 이미지의 가로 사이즈에 맞는 세로 사이즈를 %으로는 만들지 못하는 경우가 생긴다. 이럴 경우 %를 사용하더라도 가로 사이즈를 기준으로 세로 사이즈를 만들 수 있는 기술이 필요한데, padding-bottom을 사용하면 상위 태그의 가로 사이즈를 기준으로 세로 사이즈의 크기를 %으로 맞출 수 있다.
 
 ### 세로 사이즈 %으로 만들기
+
+- https://stackoverflow.com/a/15910463/22600994
+- https://stackoverflow.com/a/20201563/22600994
+- https://stackoverflow.com/a/11066527/22600994
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .parent {
+            width: 300px;
+        }
+        .rectangular {
+            position: relative;
+            width: 33%;
+            height: 0;
+            padding-bottom: 33%;
+            background-color: blue;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="rectangular"></div>
+        </div>
+    </body>
+</html>
+```
+
+- 위와 같이 코드를 만들면 height가 0임에도 불구하고 `padding-bottom`으로 인해서 태그의 세로 사이즈가 생겨난다.
+- 부모 태그의 가로 길이가 300px인데 가로 길이를 부모 태그 가로 길이의 33%으로 하고, 세로 길이를 부모 태그 가로 길이의 33%으로 한다.
+- css에서 `padding` 옵션은 가로의 사이즈를 기준으로 설정된다. 예를 들어 `padding: 5%`으로 하면 상하좌우에서 동일한 크기의 패딩 영역이 생겨난다. 가로의 기준과 세로의 기준이 다르지 않고 상위 태그의 가로 사이즈를 기준으로 세로 크기도 결정되는 것이다.
+- 따라서 `padding-top`, `padding-bottom`을 이용하면 세로 사이즈의 크기를 %으로 조절할 수 있게 된다.
