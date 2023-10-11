@@ -5,9 +5,9 @@
 - 스마트폰 디자인에서 y축 스크롤 부분에 미세하게 공간이 생기고 이를 불편하게 여길 때가 있다.
 - 스마트폰을 사용할 때는 터치에 의해서 화면이 살짝 좌 또는 우로 밀리는 경우가 있는데, 잠깐 밀려서 되돌아 올 동안 외부의 흰 배경을 보게 된다. 이러한 틈을 최대한 제거하기 위해 사용하는 방법에 관한 것이다.
 
-```
-html,body {
-  @media only screen and (max-width: 768px) {
+```css
+@media only screen and (max-width: 768px) {
+  html,body {
     overflow-x: clip;
   }
 }
